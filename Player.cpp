@@ -34,6 +34,7 @@ bool Player::loadSpells(string filename) {
 
         getline(ss, name, ',');
         ss >> damage;
+        ss.ignore();
 
         Spell spell(name, damage);
         playerSpells.insertData(spell);
