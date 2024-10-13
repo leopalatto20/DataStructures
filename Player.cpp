@@ -6,9 +6,6 @@
 using namespace std;
 
 Player::Player(string name, string build) : name(name), build(build) {
-    for(int i = 0; i < SPELLS; i++) {
-        playerSpells[i] = Spell();
-    }
 }
 
 bool Player::loadBuild() {
@@ -27,7 +24,6 @@ bool Player::loadSpells(string filename) {
     }
 
     string line;
-    int counter(0);
 
     getline(file, line); //saltar la primer linea
     while(getline(file, line)) {
@@ -40,18 +36,17 @@ bool Player::loadSpells(string filename) {
         ss >> damage;
 
         Spell spell(name, damage);
-        playerSpells[counter] = spell;
-        counter++;
+        playerSpells.insertData(spell);
     }
     file.close();
     return true;
 }
 
 void Player::showInfo() {
-    cout << "Name: " << name << "\n";
+    cout << "Player: " << name << "\n";
     cout << "Build: " << build << "\n";
-    for(int i = 0; i < SPELLS; i++) {
-        cout << "Spell " << i + 1 << ": " << playerSpells[i] << "\n";
-    }
+    cout << "Spells list: \n";
+    playerSpells.printList();
 }
+
 
