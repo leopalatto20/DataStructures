@@ -26,16 +26,16 @@ bool MonsterCatalogue::loadFromCSV() {
         int ac, hp;
         istringstream ss(line);
 
-        std::getline(ss, name, ',');
+        getline(ss, name, ',');
         ss >> cr;
         ss.ignore();
-        std::getline(ss, type, ',');
-        std::getline(ss, size, ',');
+        getline(ss, type, ',');
+        getline(ss, size, ',');
         ss >> ac;
         ss.ignore();
         ss >> hp;
         ss.ignore();
-        std::getline(ss, align);
+        getline(ss, align);
 
         Monster monster(name, cr, type, size, ac, hp, align);
         catalogue.insert(monster);

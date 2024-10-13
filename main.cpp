@@ -1,6 +1,7 @@
 #include <iostream>
 #include "MonsterCatalogue.h"
 #include "Dungeon.h"
+#include "Player.h"
 #define ROOMS 20
 
 using namespace std;
@@ -32,4 +33,14 @@ int main() {
         }
     }
     dungeon.printRooms();
+
+
+    Player player1("Dagmarsota", "dexterity");
+    if(!player1.loadBuild()) {
+        cout << "Error cargando al personaje.\n";
+        return 0;
+    }
+    player1.showInfo();
+
+    return 0;
 }
