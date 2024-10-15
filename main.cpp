@@ -40,7 +40,7 @@ int main() {
     }
     dungeon.printRooms();
 
-    Player player1("Dagmarsota", "strength");
+    Player player1("barbiGeimpleis", "intelligence");
     int count = 0;
     while(count < player1.getMaxSpells()) {
         int option;
@@ -59,11 +59,12 @@ int main() {
             else {
                 if(player1.addSpell(spellCopy)) {
                     count++;
-                    cout << "Added " << spellCopy << "\n";
+                    cout << "Added " << spellCopy << "\n\n";
                 }
             }
         }
     }
+    cout << endl << "Mostrando informacion del jugador: \n";
     player1.showInfo();
 
     return 0;

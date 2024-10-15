@@ -14,6 +14,6 @@ ostream &operator << (ostream &os, Spell &spell) {
     return os;
 }
 
-bool Spell::operator==(Spell &spell) {
+bool Spell::operator == (Spell &spell) {
     return this->name == spell.name;
 }
