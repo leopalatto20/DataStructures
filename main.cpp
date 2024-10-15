@@ -54,7 +54,7 @@ int main() {
         else {
             spellCopy = *pSpell;
             if(player1.checkForDuplicateSpells(spellCopy)) {
-                cout << "You already have that spell\n";
+                cout << "You already have that spell\n\n";
             }
             else {
                 if(player1.addSpell(spellCopy)) {

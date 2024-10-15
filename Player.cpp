@@ -15,6 +15,7 @@ int Player::determineMaxSpells(const string &build) {
         return 6;
     if(build == "intelligence")
         return 10;
+    return 0;
 }
 
 
