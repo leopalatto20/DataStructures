@@ -6,9 +6,6 @@
 
 using namespace std;
 
-MonsterCatalogue::MonsterCatalogue() : monsterNumber(0){
-}
-
 bool MonsterCatalogue::addMonster(Monster& monster) {
     return catalogue.insert(monster);
 }
@@ -42,7 +39,6 @@ bool MonsterCatalogue::loadFromCSV() {
 
         Monster monster(name, cr, type, size, ac, hp, align);
         catalogue.insert(monster);
-        monsterNumber++;
     }
     file.close();
     return true;
