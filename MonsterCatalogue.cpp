@@ -6,7 +6,10 @@
 
 using namespace std;
 
-bool MonsterCatalogue::addMonster(Monster &monster) {
+MonsterCatalogue::MonsterCatalogue() : monsterNumber(0){
+}
+
+bool MonsterCatalogue::addMonster(Monster& monster) {
     return catalogue.insert(monster);
 }
 
@@ -39,6 +42,7 @@ bool MonsterCatalogue::loadFromCSV() {
 
         Monster monster(name, cr, type, size, ac, hp, align);
         catalogue.insert(monster);
+        monsterNumber++;
     }
     file.close();
     return true;
@@ -49,8 +53,8 @@ void MonsterCatalogue::displayMonsters() {
 }
 
 Monster* MonsterCatalogue::getMonster() {
-    int wantedAC = 5 + rand() % 18;
-    Monster* foundMonster = catalogue.binarySearch(Monster("", 0, "", "", wantedAC, 0, ""));
+    int wantedMonster = rand() % 763;
+    Monster* foundMonster = catalogue.searchInOrder(wantedMonster);
 
     return foundMonster;
 }
