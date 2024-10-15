@@ -89,5 +89,14 @@ public:
 			current = current->next;
 		}
 	}
-};
 
+	void printInOrder() {
+		DLinkedNode<T>* current = head;
+		int count(1);
+		while(current) {
+			cout << count << " " << current->info << endl;
+			current = current->next;
+			count++;
+		}
+	}
+};
