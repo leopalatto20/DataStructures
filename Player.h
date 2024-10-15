@@ -3,9 +3,6 @@
 #include "Spell.h"
 #include "MonsterCatalogue.h"
 #include "DLinkedList.h"
-#define DEXTERITY_SPELLS "dexterity.csv"
-#define STRENGTH_SPELLS "strength.csv"
-#define SPELLS 4
 
 using namespace std;
 
@@ -15,9 +12,13 @@ private:
 	string build;
 	MonsterCatalogue defeatedMonsters;
 	DLinkedList<Spell> playerSpells;
-	bool loadSpells(string filename);
+	bool loadSpell(Spell spell);
+	const int MAX_SPELLS;
+	int determineMaxSpells(const string& build);
 public:
 	Player(string name, string build);
-	bool loadBuild();
 	void showInfo();
+	int getMaxSpells();
+	bool checkForDuplicateSpells(Spell spell);
+	bool addSpell(Spell spell);
 };

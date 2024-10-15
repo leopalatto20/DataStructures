@@ -2,17 +2,23 @@
 #include "MonsterCatalogue.h"
 #include "Dungeon.h"
 #include "Player.h"
+#include "SpellShop.h"
 #define ROOMS 20
 
 using namespace std;
 
 int main() {
-    srand(time(0));
+    srand(time(nullptr));
     MonsterCatalogue catalogue;
     Dungeon dungeon;
+    SpellShop spellShop;
 
     if(!catalogue.loadFromCSV()) {
         cout << "No se pudo crear el catalogo\n";
+        return 0;
+    }
+    if(!spellShop.loadSpells()) {
+        cout << "No se pudieron cargar los hechizos\n";
         return 0;
     }
 
@@ -34,11 +40,29 @@ int main() {
     }
     dungeon.printRooms();
 
-
-    Player player1("Dagmarsota", "dexterity");
-    if(!player1.loadBuild()) {
-        cout << "Error cargando al personaje.\n";
-        return 0;
+    Player player1("Dagmarsota", "strength");
+    int count = 0;
+    while(count < player1.getMaxSpells()) {
+        int option;
+        spellShop.printInOrder();
+        cout << "Enter a number: ";
+        cin >> option;
+        Spell* pSpell = spellShop.buyByNumber(option), spellCopy;
+        if(!pSpell) {
+            cout << "Not an existent spell\n";
+        }
+        else {
+            spellCopy = *pSpell;
+            if(player1.checkForDuplicateSpells(spellCopy)) {
+                cout << "You already have that spell\n";
+            }
+            else {
+                if(player1.addSpell(spellCopy)) {
+                    count++;
+                    cout << "Added " << spellCopy << "\n";
+                }
+            }
+        }
     }
     player1.showInfo();
 

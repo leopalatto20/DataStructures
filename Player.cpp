@@ -5,59 +5,38 @@
 
 using namespace std;
 
-Player::Player(string name, string build) : name(name), build(build) {
+Player::Player(string name, string build) : name(name), build(build), MAX_SPELLS(determineMaxSpells(build)) {
 }
 
-bool Player::loadBuild() {
-    if(build == "dexterity")
-        return loadSpells(DEXTERITY_SPELLS);
+int Player::determineMaxSpells(const string &build) {
     if(build == "strength")
-        return loadSpells(STRENGTH_SPELLS);
-    return false;
+        return 5;
+    if(build == "dexterity")
+        return 6;
+    if(build == "intelligence")
+        return 10;
 }
 
-bool Player::loadSpells(string filename) {
-    ifstream file(filename);
-
-    if(!file.is_open()) {
-        return false;
-    }
-
-    string line;
-
-    if(!getline(file, line)) {
-        file.close();
-        return false;
-    }
-
-    while(getline(file, line)) {
-        string cell, name;
-        int damage, count(0);
-        stringstream ss(line);
-
-        while(getline(ss, cell, ',')) {
-            switch(count) {
-                case 0: {
-                    name = cell;
-                    break;
-                }
-                case 1: {
-                    damage = stoi(cell);
-                    break;
-                }
-            }
-            count++;
-        }
-        Spell spell(name, damage);
-        playerSpells.insertData(spell);
-    }
-    file.close();
-    return true;
-}
 
 void Player::showInfo() {
     cout << "Player: " << name << "\n";
     cout << "Build: " << build << "\n";
     cout << "Spells list: \n";
     playerSpells.printInOrder();
+}
+
+bool Player::loadSpell(Spell spell) {
+    return playerSpells.insertData(spell);
+}
+
+int Player::getMaxSpells() {
+    return this->MAX_SPELLS;
+}
+
+bool Player::checkForDuplicateSpells(Spell spell) {
+    return playerSpells.checkForExistent(spell);
+}
+
+bool Player::addSpell(Spell spell) {
+    return playerSpells.insertData(spell);
 }

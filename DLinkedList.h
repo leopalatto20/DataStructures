@@ -99,4 +99,27 @@ public:
 			count++;
 		}
 	}
+
+	T* returnFromNumber(int num) {
+		int count(1);
+		DLinkedNode<T>* current = head;
+		while(current) {
+			if(count == num)
+				return &current->info;
+			count++;
+			current = current->next;
+		}
+		return nullptr;
+	}
+
+	bool checkForExistent(T data) {
+		DLinkedNode<T>* current = head;
+		while(current) {
+			if(current->info == data) {
+				return true;
+			}
+			current = current->next;
+		}
+		return false;
+	}
 };
