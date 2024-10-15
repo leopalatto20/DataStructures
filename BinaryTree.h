@@ -50,6 +50,20 @@ private:
 		return recursiveSearch(node->right, info);
 	}
 
+	T* recursiveSearchInOrder(BinaryNode<T>* node, int numToSearch, int& counter) {
+		if(!node)
+			return nullptr;
+		T* result = recursiveSearchInOrder(node->left, numToSearch, counter);
+		if(result)
+			return result;
+
+		if(counter == numToSearch)
+			return &node->info;
+		counter++;
+
+		return recursiveSearchInOrder(node->right, numToSearch, counter);
+	}
+
 public:
 	BinaryTree() : root(nullptr) {
 	}
@@ -73,5 +87,10 @@ public:
 
 	T* binarySearch(T info) {
 		return(recursiveSearch(root, info));
+	}
+
+	T* searchInOrder(int numToSearch) {
+		int counter(0);
+		return(recursiveSearchInOrder(root, numToSearch, counter));
 	}
 };
