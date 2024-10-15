@@ -21,22 +21,48 @@ bool MonsterCatalogue::loadFromCSV() {
 
     getline(file, line); //saltar la primer linea
     while(getline(file, line)) {
-        string name, type, size, align;
+        string name, type, size, align, cell;
         double cr;
         int ac, hp;
-        istringstream ss(line);
+        stringstream ss(line);
+        int count(0);
 
-        getline(ss, name, ',');
-        ss >> cr;
-        ss.ignore();
-        getline(ss, type, ',');
-        getline(ss, size, ',');
-        ss >> ac;
-        ss.ignore();
-        ss >> hp;
-        ss.ignore();
-        getline(ss, align);
-
+        while(getline(ss, cell, ',')) {
+            switch(count) {
+                case 0: {
+                    name = cell;
+                    break;
+                }
+                case 1: {
+                    cr = stod(cell);
+                    break;
+                }
+                case 2: {
+                    type = cell;
+                    break;
+                }
+                case 3: {
+                    size = cell;
+                    break;
+                }
+                case 4: {
+                    ac = stoi(cell);
+                    break;
+                }
+                case 5: {
+                    hp = stoi(cell);
+                    break;
+                }
+                case 6: {
+                    align = cell;
+                    break;
+                }
+                default: {
+                    return false;
+                }
+            }
+            count++;
+        }
         Monster monster(name, cr, type, size, ac, hp, align);
         catalogue.insert(monster);
     }

@@ -25,17 +25,29 @@ bool Player::loadSpells(string filename) {
 
     string line;
 
-    getline(file, line); //saltar la primer linea
+    if(!getline(file, line)) {
+        file.close();
+        return false;
+    }
+
     while(getline(file, line)) {
-        string name;
-        int damage;
+        string cell, name;
+        int damage, count(0);
+        stringstream ss(line);
 
-        istringstream ss(line);
-
-        getline(ss, name, ',');
-        ss >> damage;
-        ss.ignore();
-
+        while(getline(ss, cell, ',')) {
+            switch(count) {
+                case 0: {
+                    name = cell;
+                    break;
+                }
+                case 1: {
+                    damage = stoi(cell);
+                    break;
+                }
+            }
+            count++;
+        }
         Spell spell(name, damage);
         playerSpells.insertData(spell);
     }
