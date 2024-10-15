@@ -47,7 +47,5 @@ void Player::showInfo() {
     cout << "Player: " << name << "\n";
     cout << "Build: " << build << "\n";
     cout << "Spells list: \n";
-    playerSpells.printList();
+    playerSpells.printInOrder();
 }
-
-
