@@ -40,7 +40,7 @@ int main() {
     }
     dungeon.printRooms();
 
-    Player player1("barbiGeimpleis", "intelligence");
+    Player player1("barbiGeimpleis", "strength");
     int count = 0;
     while(count < player1.getMaxSpells()) {
         int option;
@@ -53,6 +53,8 @@ int main() {
         }
         else {
             spellCopy = *pSpell;
+            if(!spellShop.deleteSpell(spellCopy))
+                return 0;
             if(player1.checkForDuplicateSpells(spellCopy)) {
                 cout << "You already have that spell\n\n";
             }

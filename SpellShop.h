@@ -10,4 +10,5 @@ public:
     bool loadSpells();
     Spell* buyByNumber(int num);
     void printInOrder();
+    bool deleteSpell(Spell spell);
 };

@@ -12,4 +12,5 @@ public:
 	Spell(string name, int damage);
 	friend ostream& operator << (ostream& os, Spell& spell);
 	bool operator == (Spell& spell);
+	bool operator != (Spell& spell);
 };

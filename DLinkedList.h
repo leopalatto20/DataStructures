@@ -58,8 +58,6 @@ public:
 	}
 
 	bool deleteNode(T dato) {
-		if(!head)
-			return false;
 		DLinkedNode<T>* current = head;
 		while(current && current->info != dato) {
 			current = current->next;
@@ -68,6 +66,8 @@ public:
 			return false;
 		if(current == head)
 			return deleteHead();
+		if(current ->next)
+			current->next->prev = current->prev;
 		current->prev->next = current->next;
 		delete current;
 		return true;
@@ -123,4 +123,5 @@ public:
 		}
 		return false;
 	}
+
 };

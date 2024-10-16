@@ -55,3 +55,7 @@ void SpellShop::printInOrder() {
 Spell* SpellShop::buyByNumber(int num) {
     return spellList.returnFromNumber(num);
 }
+
+bool SpellShop::deleteSpell(Spell spell) {
+    return spellList.deleteNode(spell);
+}
