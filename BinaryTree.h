@@ -25,7 +25,7 @@ private:
 				return false;
 			return true;
 		}
-		if(info < node->info) {
+		if(info <= node->info) {
 			return recursiveInsert(node->left, info);
 		}
 		return recursiveInsert(node->right, info);
@@ -53,12 +53,14 @@ private:
 	T* recursiveSearchInOrder(BinaryNode<T>* node, int numToSearch, int& counter) {
 		if(!node)
 			return nullptr;
-		T* result = recursiveSearchInOrder(node->left, numToSearch, counter);
-		if(result)
-			return result;
+		T* leftResult = recursiveSearchInOrder(node->left, numToSearch, counter);
+		if(leftResult)
+			return leftResult;
 
-		if(counter == numToSearch)
+		if(counter == numToSearch) {
+			cout << "Num searched: " << counter << endl;
 			return &node->info;
+		}
 		counter++;
 
 		return recursiveSearchInOrder(node->right, numToSearch, counter);

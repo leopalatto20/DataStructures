@@ -24,6 +24,11 @@ bool Monster::operator == (Monster &monster) {
     return this->ac == monster.ac;
 }
 
+bool Monster::operator<=(Monster &monster) {
+    return this->ac <= monster.ac;
+}
+
+
 int Monster::getAc() {
     return this->ac;
 }

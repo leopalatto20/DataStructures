@@ -18,6 +18,7 @@ public:
     bool operator <(Monster& monster);
     bool operator >(Monster& monster);
     bool operator == (Monster& monster);
+    bool operator <= (Monster& monster);
     int getAc();
     string getName();
 
