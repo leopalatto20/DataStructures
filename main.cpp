@@ -17,6 +17,7 @@ int main() {
         cout << "No se pudo crear el catalogo\n";
         return 0;
     }
+    catalogue.displayMonstersInOrder();
     if(!spellShop.loadSpells()) {
         cout << "No se pudieron cargar los hechizos\n";
         return 0;

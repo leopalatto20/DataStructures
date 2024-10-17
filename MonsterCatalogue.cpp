@@ -80,3 +80,8 @@ Monster* MonsterCatalogue::getMonster() {
 
     return foundMonster;
 }
+
+void MonsterCatalogue::displayMonstersInOrder() {
+    catalogue.displayInOrder();
+}
+

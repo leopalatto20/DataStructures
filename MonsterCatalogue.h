@@ -10,5 +10,6 @@ public:
     bool addMonster(Monster& monster);
     bool loadFromCSV();
     void displayMonsters();
+    void displayMonstersInOrder();
     Monster* getMonster();
 };

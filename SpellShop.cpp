@@ -1,5 +1,4 @@
 #include "SpellShop.h"
-#include <iostream>
 #include <fstream>
 #include <sstream>
 #define SPELLS "Spells.csv"

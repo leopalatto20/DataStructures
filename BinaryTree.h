@@ -57,13 +57,24 @@ private:
 		if(leftResult)
 			return leftResult;
 
+		counter++;
 		if(counter == numToSearch) {
 			cout << "Num searched: " << counter << endl;
 			return &node->info;
 		}
-		counter++;
 
 		return recursiveSearchInOrder(node->right, numToSearch, counter);
+	}
+
+	void recursiveDisplayInOrder(BinaryNode<T>* node, int &count) {
+		if (!node) {
+			return;
+		}
+		recursiveDisplayInOrder(node->left, count);
+
+		count++;
+		cout << "Node " << count << ": " << node->info << endl;
+		recursiveDisplayInOrder(node->right, count);
 	}
 
 public:
@@ -92,7 +103,12 @@ public:
 	}
 
 	T* searchInOrder(int numToSearch) {
-		int counter(0);
+		int counter(1);
 		return(recursiveSearchInOrder(root, numToSearch, counter));
+	}
+
+	void displayInOrder() {
+		int count = 1;
+		recursiveDisplayInOrder(root, count);
 	}
 };
