@@ -5,33 +5,40 @@
 
 using namespace std;
 
-Player::Player(string name, string build) : name(name), build(build), MAX_SPELLS(determineMaxSpells(build)) {
+Player::Player(string name, string build) : name(name), build(build), maxSpells(0), hp(0) {
 }
 
-int Player::determineMaxSpells(const string &build) {
-    if(build == "strength")
-        return 5;
-    if(build == "dexterity")
-        return 6;
-    if(build == "intelligence")
-        return 10;
-    return 0;
+bool Player::loadStats() {
+    if(build == "strength") {
+        this->maxSpells = 5;
+        this->hp = 75;
+        return true;
+    }
+    if(build == "dexterity") {
+        this->maxSpells = 6;
+        this->hp = 60;
+        return true;
+    }
+    if(build == "intelligence") {
+        this->maxSpells = 10;
+        this->hp = 45;
+        return true;
+    }
+    return false;
 }
+
 
 
 void Player::showInfo() {
     cout << "Player: " << name << "\n";
     cout << "Build: " << build << "\n";
+    cout << "Hp: " << hp << "\n";
     cout << "Spells list: \n";
     playerSpells.printInOrder();
 }
 
-bool Player::loadSpell(Spell spell) {
-    return playerSpells.insertData(spell);
-}
-
 int Player::getMaxSpells() {
-    return this->MAX_SPELLS;
+    return this->maxSpells;
 }
 
 bool Player::checkForDuplicateSpells(Spell spell) {

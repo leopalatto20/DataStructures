@@ -12,13 +12,13 @@ private:
 	string build;
 	MonsterCatalogue defeatedMonsters;
 	DLinkedList<Spell> playerSpells;
-	bool loadSpell(Spell spell);
-	const int MAX_SPELLS;
-	int determineMaxSpells(const string& build);
+	int maxSpells;
+	int hp;
 public:
 	Player(string name, string build);
 	void showInfo();
 	int getMaxSpells();
 	bool checkForDuplicateSpells(Spell spell);
 	bool addSpell(Spell spell);
+	bool loadStats();
 };

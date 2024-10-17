@@ -41,6 +41,8 @@ int main() {
     dungeon.printRooms();
 
     Player player1("barbiGeimpleis", "strength");
+    if(!player1.loadStats())
+        return 0;
     int count = 0;
     while(count < player1.getMaxSpells()) {
         int option;
