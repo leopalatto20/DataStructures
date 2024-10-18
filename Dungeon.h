@@ -10,4 +10,5 @@ public:
     Dungeon();
     bool createRoom(Monster monster);
     void printRooms();
+    Monster* getDeadMonster(int roomNumber);
 };

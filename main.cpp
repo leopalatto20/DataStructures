@@ -22,6 +22,7 @@ int main() {
         cout << "No se pudieron cargar los hechizos\n";
         return 0;
     }
+    cout << endl;
 
     cout << "Crear dungeon...\n";
     for(int i = 0; i < ROOMS; i++) {
@@ -39,9 +40,11 @@ int main() {
             return 0;
         }
     }
+    cout << endl;
     dungeon.printRooms();
+    cout << endl;
 
-    Player player1("barbiGeimpleis", "strength");
+    Player player1("barbiGeimpleis", "dexterity");
     if(!player1.loadStats())
         return 0;
     int count = 0;
@@ -69,6 +72,12 @@ int main() {
             }
         }
     }
+    Monster* pMonster = nullptr, copyMonster;
+    pMonster = dungeon.getDeadMonster(1);
+    if(!pMonster)
+        return 0;
+    copyMonster = *pMonster;
+    player1.addMonster(copyMonster);
     cout << endl << "Mostrando informacion del jugador: \n";
     player1.showInfo();
 

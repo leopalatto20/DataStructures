@@ -14,3 +14,11 @@ bool Dungeon::createRoom(Monster monster) {
 void Dungeon::printRooms() {
     rooms.printList();
 }
+
+Monster* Dungeon::getDeadMonster(int roomNumber) {
+    Room *room = rooms.returnFromNumber(roomNumber);
+    if(!room) {
+        return nullptr;
+    }
+    return &room->monster;
+}

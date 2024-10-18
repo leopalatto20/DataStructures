@@ -21,4 +21,5 @@ public:
 	bool checkForDuplicateSpells(Spell spell);
 	bool addSpell(Spell spell);
 	bool loadStats();
+	bool addMonster(Monster &monster);
 };

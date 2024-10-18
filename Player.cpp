@@ -35,6 +35,8 @@ void Player::showInfo() {
     cout << "Hp: " << hp << "\n";
     cout << "Spells list: \n";
     playerSpells.printInOrder();
+    cout << "Defeated monsters: \n";
+    defeatedMonsters.displayMonstersInOrder();
 }
 
 int Player::getMaxSpells() {
@@ -47,4 +49,8 @@ bool Player::checkForDuplicateSpells(Spell spell) {
 
 bool Player::addSpell(Spell spell) {
     return playerSpells.insertData(spell);
+}
+
+bool Player::addMonster(Monster &monster) {
+    return defeatedMonsters.addMonster(monster);
 }

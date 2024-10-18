@@ -73,7 +73,7 @@ private:
 		recursiveDisplayInOrder(node->left, count);
 
 		count++;
-		cout << "Node " << count << ": " << node->info << endl;
+		cout << count << ": " << node->info << endl;
 		recursiveDisplayInOrder(node->right, count);
 	}
 
@@ -103,12 +103,12 @@ public:
 	}
 
 	T* searchInOrder(int numToSearch) {
-		int counter(1);
+		int counter(0);
 		return(recursiveSearchInOrder(root, numToSearch, counter));
 	}
 
 	void displayInOrder() {
-		int count = 1;
+		int count = 0;
 		recursiveDisplayInOrder(root, count);
 	}
 };
