@@ -38,6 +38,6 @@ string Monster::getName() {
 }
 
 ostream& operator <<(ostream& os, Monster& monster) {
-    os << "Name: " << monster.name << ", " << "AC: " << monster.ac << "\n";
+    os << monster.name << ", " << "HP: " << monster.hp;
     return os;
 }

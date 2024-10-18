@@ -75,9 +75,10 @@ void MonsterCatalogue::displayMonsters() {
 }
 
 Monster* MonsterCatalogue::getMonster() {
-    int wantedMonster = rand() % 763;
+    int wantedMonster = 1 + rand() % 762;
     Monster* foundMonster = catalogue.searchInOrder(wantedMonster);
-
+    if(!foundMonster)
+        return nullptr;
     return foundMonster;
 }
 
