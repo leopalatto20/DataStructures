@@ -35,6 +35,8 @@ bool MonsterCatalogue::loadFromCSV() {
                     break;
                 }
                 case 1: {
+                    if(!isValidDecimal(cell))
+                        return false;
                     cr = stod(cell);
                     break;
                 }
@@ -47,10 +49,14 @@ bool MonsterCatalogue::loadFromCSV() {
                     break;
                 }
                 case 4: {
+                    if(!isValidNumber(cell))
+                        return false;
                     ac = stoi(cell);
                     break;
                 }
                 case 5: {
+                    if(!isValidNumber(cell))
+                        return false;
                     hp = stoi(cell);
                     break;
                 }
@@ -87,3 +93,23 @@ void MonsterCatalogue::displayMonstersInOrder() {
     catalogue.displayInOrder();
 }
 
+bool MonsterCatalogue::isValidNumber(const string &str) {
+    for(int i = 0; i < str.length(); i++) {
+        if(!isdigit(str[i]))
+            return false;
+    }
+    return true;
+}
+
+bool MonsterCatalogue::isValidDecimal(const string &str) {
+    int decimalCount = 0;
+    for(int i = 0; i < str.length(); i++) {
+        if(str[i] == '.')
+            decimalCount++;
+        else if(!isdigit(str[i]))
+            return false;
+    }
+    if(decimalCount > 1)
+        return false;
+    return true;
+}

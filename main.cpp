@@ -1,8 +1,5 @@
 #include <iostream>
-#include "MonsterCatalogue.h"
-#include "Dungeon.h"
-#include "Player.h"
-#include "SpellShop.h"
+#include "main.h"
 #define ROOMS 20
 
 using namespace std;
@@ -44,15 +41,22 @@ int main() {
     dungeon.printRooms();
     cout << endl;
 
-    Player player1("barbiGeimpleis", "dexterity");
+    Player player1("barbiGeimpleis", "strength");
     if(!player1.loadStats())
         return 0;
     int count = 0;
     while(count < player1.getMaxSpells()) {
         int option;
-        spellShop.printInOrder();
-        cout << "Enter a number: ";
-        cin >> option;
+        string strOption;
+        do {
+            spellShop.printInOrder();
+            cout << "Enter a number: ";
+            cin >> strOption;
+            if(!isValidNumber(strOption)) {
+                cout << "Not a valid number, try again.\n";
+            }
+        } while(!isValidNumber(strOption));
+        option = stoi(strOption);
         Spell *pSpell = spellShop.buyByNumber(option), spellCopy;
         if(!pSpell) {
             cout << "Not an existent spell\n";
@@ -81,4 +85,12 @@ int main() {
     player1.showInfo();
 
     return 0;
+}
+
+bool isValidNumber(const string &str) {
+    for(int i = 0; i < str.length(); i++) {
+        if(!isdigit(str[i]))
+            return false;
+    }
+    return true;
 }

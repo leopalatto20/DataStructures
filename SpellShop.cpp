@@ -31,6 +31,8 @@ bool SpellShop::loadSpells() {
                     break;
                 }
                 case 1: {
+                    if(!isValidNumber(cell))
+                        return false;
                     damage = stoi(cell);
                     break;
                 }
@@ -57,4 +59,12 @@ Spell* SpellShop::buyByNumber(int num) {
 
 bool SpellShop::deleteSpell(Spell spell) {
     return spellList.deleteNode(spell);
+}
+
+bool SpellShop::isValidNumber(const string &str) {
+    for(int i = 0; i < str.length(); i++) {
+        if(!isdigit(str[i]))
+            return false;
+    }
+    return true;
 }
