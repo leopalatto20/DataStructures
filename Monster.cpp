@@ -12,11 +12,11 @@ Monster::Monster(string name, double cr, string type, string size, int ac, int h
 Monster::~Monster() {
 }
 
-bool Monster::operator <(Monster& monster) {
+bool Monster::operator < (Monster &monster) {
     return this->ac < monster.ac;
 }
 
-bool Monster::operator >(Monster& monster) {
+bool Monster::operator > (Monster &monster) {
     return this->ac > monster.ac;
 }
 
@@ -37,7 +37,7 @@ string Monster::getName() {
     return this->name;
 }
 
-ostream& operator <<(ostream& os, Monster& monster) {
+ostream &operator <<(ostream &os, Monster &monster) {
     os << monster.name << ", " << "HP: " << monster.hp;
     return os;
 }

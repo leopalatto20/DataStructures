@@ -7,7 +7,7 @@ class MonsterCatalogue {
 private:
     BinaryTree<Monster> catalogue;
 public:
-    bool addMonster(Monster& monster);
+    bool addMonster(Monster &monster);
     bool loadFromCSV();
     void displayMonsters();
     void displayMonstersInOrder();

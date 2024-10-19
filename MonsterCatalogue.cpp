@@ -1,12 +1,11 @@
 #include "MonsterCatalogue.h"
-#include <iostream>
 #include <fstream>
 #include <sstream>
 #include <ctime>
 
 using namespace std;
 
-bool MonsterCatalogue::addMonster(Monster& monster) {
+bool MonsterCatalogue::addMonster(Monster &monster) {
     return catalogue.insert(monster);
 }
 
@@ -19,7 +18,9 @@ bool MonsterCatalogue::loadFromCSV() {
 
     string line;
 
-    getline(file, line); //saltar la primer linea
+    if(!getline(file, line)) { //Saltar la primer linea
+        return false;
+    }
     while(getline(file, line)) {
         string name, type, size, align, cell;
         double cr;
@@ -76,7 +77,7 @@ void MonsterCatalogue::displayMonsters() {
 
 Monster* MonsterCatalogue::getMonster() {
     int wantedMonster = 1 + rand() % 762;
-    Monster* foundMonster = catalogue.searchInOrder(wantedMonster);
+    Monster *foundMonster = catalogue.searchInOrder(wantedMonster);
     if(!foundMonster)
         return nullptr;
     return foundMonster;

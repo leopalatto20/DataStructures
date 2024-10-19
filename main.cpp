@@ -53,7 +53,7 @@ int main() {
         spellShop.printInOrder();
         cout << "Enter a number: ";
         cin >> option;
-        Spell* pSpell = spellShop.buyByNumber(option), spellCopy;
+        Spell *pSpell = spellShop.buyByNumber(option), spellCopy;
         if(!pSpell) {
             cout << "Not an existent spell\n";
         }
@@ -72,8 +72,7 @@ int main() {
             }
         }
     }
-    Monster* pMonster = nullptr, copyMonster;
-    pMonster = dungeon.getDeadMonster(1);
+    Monster *pMonster = dungeon.getDeadMonster(1), copyMonster;
     if(!pMonster)
         return 0;
     copyMonster = *pMonster;

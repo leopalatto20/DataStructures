@@ -7,9 +7,9 @@ using namespace std;
 template <typename T>
 class BinaryTree {
 private:
-	BinaryNode<T>* root;
+	BinaryNode<T> *root;
 
-	void recursiveDeleteTree(BinaryNode<T>*& node) {
+	void recursiveDeleteTree(BinaryNode<T> *&node) {
 		if(!node)
 			return;
 		recursiveDeleteTree(node->left);
@@ -18,7 +18,7 @@ private:
 		node = nullptr;
 	}
 
-	bool recursiveInsert(BinaryNode<T>*& node, T info) {
+	bool recursiveInsert(BinaryNode<T> *&node, T info) {
 		if(!node) {
 			node = new(nothrow) BinaryNode<T>(info);
 			if(!node)
@@ -31,7 +31,7 @@ private:
 		return recursiveInsert(node->right, info);
 	}
 
-	void recursiveDisplay(BinaryNode<T>* node) {
+	void recursiveDisplay(BinaryNode <T>*node) {
 		if(!node)
 			return;
 		recursiveDisplay(node->left);
@@ -39,7 +39,7 @@ private:
 		recursiveDisplay(node->right);
 	}
 
-	T* recursiveSearch(BinaryNode<T>* node, T info) {
+	T* recursiveSearch(BinaryNode<T> *node, T info) {
 		if(!node)
 			return nullptr;
 		if(node->info == info) {
@@ -50,7 +50,7 @@ private:
 		return recursiveSearch(node->right, info);
 	}
 
-	T* recursiveSearchInOrder(BinaryNode<T>* node, int numToSearch, int& counter) {
+	T* recursiveSearchInOrder(BinaryNode<T> *node, int numToSearch, int &counter) {
 		if(!node)
 			return nullptr;
 		T* leftResult = recursiveSearchInOrder(node->left, numToSearch, counter);
@@ -66,7 +66,7 @@ private:
 		return recursiveSearchInOrder(node->right, numToSearch, counter);
 	}
 
-	void recursiveDisplayInOrder(BinaryNode<T>* node, int &count) {
+	void recursiveDisplayInOrder(BinaryNode<T> *node, int &count) {
 		if (!node) {
 			return;
 		}
