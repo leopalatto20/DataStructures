@@ -40,7 +40,7 @@ int main() {
     cout << endl;
     dungeon.printRooms();
     cout << endl;
-
+    catalogue.deleteCatalogue(); //Borrar el catalogo despues de cargar los monstruos
     Player player1("barbiGeimpleis", "strength");
     if(!player1.loadStats())
         return 0;
@@ -76,6 +76,7 @@ int main() {
             }
         }
     }
+    spellShop.deleteShop(); //Borrar la tienda despues de cargar los hechizos
     Monster *pMonster = dungeon.getDeadMonster(1), copyMonster;
     if(!pMonster)
         return 0;

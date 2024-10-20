@@ -113,3 +113,7 @@ bool MonsterCatalogue::isValidDecimal(const string &str) {
         return false;
     return true;
 }
+
+void MonsterCatalogue::deleteCatalogue() {
+    catalogue.deleteTree();
+}

@@ -14,4 +14,5 @@ public:
     void displayMonsters();
     void displayMonstersInOrder();
     Monster* getMonster();
+    void deleteCatalogue();
 };

@@ -68,3 +68,7 @@ bool SpellShop::isValidNumber(const string &str) {
     }
     return true;
 }
+
+void SpellShop::deleteShop() {
+    spellList.deleteList();
+}
