@@ -5,7 +5,7 @@
 using namespace std;
 
 int main() {
-    srand(time(nullptr));
+    srand(time(0));
     MonsterCatalogue catalogue;
     Dungeon dungeon;
     SpellShop spellShop;
@@ -41,6 +41,7 @@ int main() {
     dungeon.printRooms();
     cout << endl;
     catalogue.deleteCatalogue(); //Borrar el catalogo despues de cargar los monstruos
+
     Player player1("barbiGeimpleis", "strength");
     if(!player1.loadStats())
         return 0;
@@ -58,16 +59,14 @@ int main() {
         } while(!isValidNumber(strOption));
         option = stoi(strOption);
         Spell *pSpell = spellShop.buyByNumber(option), spellCopy;
-        if(!pSpell) {
+        if(!pSpell)
             cout << "Not an existent spell\n";
-        }
         else {
             spellCopy = *pSpell;
             if(!spellShop.deleteSpell(spellCopy))
                 return 0;
-            if(player1.checkForDuplicateSpells(spellCopy)) {
+            if(player1.checkForDuplicateSpells(spellCopy))
                 cout << "You already have that spell\n\n";
-            }
             else {
                 if(player1.addSpell(spellCopy)) {
                     count++;
@@ -82,7 +81,7 @@ int main() {
         return 0;
     copyMonster = *pMonster;
     player1.addMonster(copyMonster);
-    cout << endl << "Mostrando informacion del jugador: \n";
+    cout << "Mostrando informacion del jugador: \n";
     player1.showInfo();
 
     return 0;

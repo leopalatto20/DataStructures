@@ -12,16 +12,19 @@ bool Player::loadStats() {
     if(build == "strength") {
         this->maxSpells = 5;
         this->hp = 75;
+        this->defaultAttack = Spell("Lions Claw", 15);
         return true;
     }
     if(build == "dexterity") {
         this->maxSpells = 6;
         this->hp = 60;
+        this->defaultAttack = Spell("Ichimonji", 10);
         return true;
     }
     if(build == "intelligence") {
         this->maxSpells = 10;
         this->hp = 45;
+        this->defaultAttack = Spell("Glintsote Pebble", 3);
         return true;
     }
     return false;
@@ -33,6 +36,7 @@ void Player::showInfo() {
     cout << "Player: " << name << "\n";
     cout << "Build: " << build << "\n";
     cout << "Hp: " << hp << "\n";
+    cout << "Default attack: " << defaultAttack << "\n";
     cout << "Spells list: \n";
     playerSpells.printInOrder();
     cout << "Defeated monsters: \n";

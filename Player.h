@@ -12,6 +12,7 @@ private:
 	string build;
 	MonsterCatalogue defeatedMonsters;
 	DLinkedList<Spell> playerSpells;
+	Spell defaultAttack;
 	int maxSpells;
 	int hp;
 public:
