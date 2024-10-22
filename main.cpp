@@ -144,7 +144,7 @@ int main() {
         player1.showInfo();
         return 0;
     }
-    cout << "Ganaste el juego, FELICIDADES FORTNITE\n";
+    cout << "¡Ganaste el juego, derrotaste a todos los monstruos!\n";
     cout << "Estadisticas finales: \n";
     player1.showInfo();
     return 0;
