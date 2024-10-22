@@ -15,12 +15,14 @@ private:
 	Spell defaultAttack;
 	int maxSpells;
 	int hp;
+	int mp;
 public:
 	Player(string name, string build);
 	void showInfo();
 	int getMaxSpells();
 	bool checkForDuplicateSpells(Spell spell);
-	bool addSpell(Spell spell);
+	bool addSpell(Spell &spell);
 	bool loadStats();
 	bool addMonster(Monster &monster);
+	int useSpell(int spellNum);
 };

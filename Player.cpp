@@ -12,19 +12,22 @@ bool Player::loadStats() {
     if(build == "strength") {
         this->maxSpells = 5;
         this->hp = 75;
-        this->defaultAttack = Spell("Lions Claw", 15);
+        this->mp = 100;
+        this->defaultAttack = Spell("Lions Claw", 15, 0);
         return true;
     }
     if(build == "dexterity") {
         this->maxSpells = 6;
         this->hp = 60;
-        this->defaultAttack = Spell("Ichimonji", 10);
+        this->mp = 100;
+        this->defaultAttack = Spell("Ichimonji", 10, 0);
         return true;
     }
     if(build == "intelligence") {
         this->maxSpells = 10;
         this->hp = 45;
-        this->defaultAttack = Spell("Glintsote Pebble", 3);
+        this->mp = 100;
+        this->defaultAttack = Spell("Glintsote Pebble", 3, 0);
         return true;
     }
     return false;
@@ -51,10 +54,18 @@ bool Player::checkForDuplicateSpells(Spell spell) {
     return playerSpells.checkForExistent(spell);
 }
 
-bool Player::addSpell(Spell spell) {
+bool Player::addSpell(Spell &spell) {
     return playerSpells.insertData(spell);
 }
 
 bool Player::addMonster(Monster &monster) {
     return defeatedMonsters.addMonster(monster);
+}
+
+ int Player::useSpell(int spellNum) {
+    Spell  *spell = playerSpells.returnFromNumber(spellNum);
+    int mpCost = spell->getMpCost();
+    if(mp - mpCost < 0)
+        return 0;
+    return spell->getDamage();
 }

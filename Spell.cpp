@@ -3,10 +3,10 @@
 
 using namespace std;
 
-Spell::Spell() : name(""), damage(0) {
+Spell::Spell() : name(""), damage(0), mpCost(0) {
 }
 
-Spell::Spell(string name, int damage) : name(name), damage(damage) {
+Spell::Spell(string name, int damage, int mpCost) : name(name), damage(damage), mpCost(mpCost) {
 }
 
 ostream &operator << (ostream &os, Spell &spell) {
@@ -20,4 +20,12 @@ bool Spell::operator == (Spell &spell) {
 
 bool Spell::operator!=(Spell &spell) {
     return this->name != spell.name;
+}
+
+int Spell::getMpCost() {
+    return this->mpCost;
+}
+
+int Spell::getDamage() {
+    return this->damage;
 }

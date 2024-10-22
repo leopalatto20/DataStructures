@@ -21,7 +21,7 @@ bool SpellShop::loadSpells() {
 
     while(getline(file, line)) {
         string cell, name;
-        int damage, count(0);
+        int damage, count(0), mpCost;
         stringstream ss(line);
 
         while(getline(ss, cell, ',')) {
@@ -36,13 +36,19 @@ bool SpellShop::loadSpells() {
                     damage = stoi(cell);
                     break;
                 }
+                case 2: {
+                    if(!isValidNumber(cell))
+                        return false;
+                    mpCost = stoi(cell);
+                    break;
+                }
                 default: {
                     return false;
                 }
             }
             count++;
         }
-        Spell spell(name, damage);
+        Spell spell(name, damage, mpCost);
         spellList.insertData(spell);
     }
     file.close();
