@@ -128,7 +128,7 @@ int main() {
         if(fightMonster(player1, copyMonster)) {
             cout << "Derrotaste al monstruo, vas contra el siguiente.\n";
             player1.addMonster(copyMonster);
-            cout << "Te curas antes de pelear contra el siguiente monstruo.\n";
+            cout << "Te curas antes de pelear contra el siguiente monstruo.\n\n";
             player1.setHp(player1.getHp() + 50);
             roomNumber++;
         }
