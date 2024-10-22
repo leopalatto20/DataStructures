@@ -89,27 +89,27 @@ int main() {
         string strOption;
         do {
             spellShop.printInOrder();
-            cout << "Enter a number: ";
+            cout << "Elige un hechizo: ";
             cin >> strOption;
             if(!isValidNumber(strOption)) {
-                cout << "Not a valid number, try again.\n";
+                cout << "No es un numero valido, intenta de nuevo.\n";
             }
         } while(!isValidNumber(strOption));
         option = stoi(strOption);
 
         Spell *pSpell = spellShop.buyByNumber(option), spellCopy;
         if(!pSpell)
-            cout << "Not an existent spell\n";
+            cout << "Ese hechizo no existe.\n";
         else {
             spellCopy = *pSpell;
             if(!spellShop.deleteSpell(spellCopy))
                 return 1;
             if(player1.checkForDuplicateSpells(spellCopy))
-                cout << "You already have that spell\n\n";
+                cout << "Ya tienes ese hechizo.\n\n";
             else {
                 if(player1.addSpell(spellCopy)) {
                     count++;
-                    cout << "Added " << spellCopy << "\n\n";
+                    cout << "Agregando hechizo " << spellCopy << "\n\n";
                 }
             }
         }
@@ -126,7 +126,7 @@ int main() {
         }
         copyMonster = *pMonster;
         if(fightMonster(player1, copyMonster)) {
-            cout << "Derrotaste al monstruo, vas contra el siguiente.\n";
+            cout << "\nDerrotaste al monstruo, vas contra el siguiente.\n";
             player1.addMonster(copyMonster);
             cout << "Te curas antes de pelear contra el siguiente monstruo.\n\n";
             player1.setHp(player1.getHp() + 50);
@@ -169,7 +169,7 @@ bool fightMonster(Player &player, Monster &monster) { //Si regresa false, el jug
         while(!validSpell) {
             do {
                 player.showSpells();
-                cout << "0. Usar hechizo default.\n";
+                cout << "0. Usar hechizo default.\n\n";
                 cout << "Escoge uno de tus hechizos: ";
                 cin >> spellChoiceStr;
                 if(!isValidNumber(spellChoiceStr))

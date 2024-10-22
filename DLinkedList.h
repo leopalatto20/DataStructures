@@ -98,7 +98,6 @@ public:
 			current = current->next;
 			count++;
 		}
-		cout << endl;
 	}
 
 	T* returnFromNumber(int num) {

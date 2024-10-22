@@ -39,19 +39,19 @@ bool Player::loadStats() {
 
 
 void Player::showInfo() {
-    cout << "Player: " << name << "\n";
-    cout << "Build: " << build << "\n";
+    cout << "Jugador: " << name << "\n";
+    cout << "Clase: " << build << "\n";
     cout << "Hp: " << hp << "\n";
-    cout << "Default attack: " << defaultAttack << "\n";
-    cout << "Spells list: \n";
+    cout << "Ataque default: " << defaultAttack << "\n";
+    cout << "Lista de hechizos: \n";
     playerSpells.printInOrder();
-    cout << "Defeated monsters: \n";
+    cout << "Monstruos derrotados: \n";
     defeatedMonsters.displayMonstersInOrder();
 }
 
 void Player::showSpells() {
     playerSpells.printInOrder();
-    cout << "Default spell: " << defaultAttack << endl;
+    cout << "Ataque default: " << defaultAttack << endl;
 }
 
 int Player::getMaxSpells() {
