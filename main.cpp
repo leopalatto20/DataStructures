@@ -83,7 +83,7 @@ int main() {
         return 1;
     cout << endl;
     int count = 0;
-    while(count < player1.getMaxSpells()) {
+    while(count < player1.getMaxSpells()) { //Acabamos hasta que tengamos todos los hechizos
         cout << "Escoge tus hechizos\n";
         int option;
         string strOption;
