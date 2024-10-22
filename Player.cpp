@@ -8,6 +8,9 @@ using namespace std;
 Player::Player(string name, string build) : name(name), build(build), maxSpells(0), hp(0) {
 }
 
+Player::~Player() {
+}
+
 bool Player::loadStats() {
     if(build == "strength") {
         this->maxSpells = 5;

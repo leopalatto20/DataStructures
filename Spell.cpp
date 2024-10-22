@@ -9,6 +9,9 @@ Spell::Spell() : name(""), damage(0), mpCost(0) {
 Spell::Spell(string name, int damage, int mpCost) : name(name), damage(damage), mpCost(mpCost) {
 }
 
+Spell::~Spell() {
+}
+
 ostream &operator << (ostream &os, Spell &spell) {
     os << spell.name << "| Damage: " << spell.damage << "| MP cost: " << spell.mpCost;
     return os;

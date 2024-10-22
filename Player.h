@@ -18,6 +18,7 @@ private:
 	int mp;
 public:
 	Player(string name, string build);
+	~Player();
 	void showInfo();
 	void showSpells();
 	int getMaxSpells();

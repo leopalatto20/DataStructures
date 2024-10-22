@@ -8,6 +8,7 @@ private:
     DLinkedList<Room> rooms;
 public:
     Dungeon();
+    ~Dungeon();
     bool createRoom(Monster monster);
     void printRooms();
     Monster* getMonsterFromNumber(int roomNumber);

@@ -10,6 +10,7 @@ private:
 	int mpCost;
 public:
 	Spell();
+	~Spell();
 	Spell(string name, int damage, int mpCost);
 	friend ostream &operator << (ostream &os, Spell &spell);
 	bool operator == (Spell &spell);

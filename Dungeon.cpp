@@ -3,6 +3,9 @@
 Dungeon::Dungeon() {
 }
 
+Dungeon::~Dungeon() {
+}
+
 bool Dungeon::createRoom(Monster monster) {
     Room newRoom(monster);
     if(!rooms.insertData(newRoom))
