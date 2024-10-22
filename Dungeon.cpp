@@ -14,7 +14,7 @@ void Dungeon::printRooms() {
     rooms.printList();
 }
 
-Monster* Dungeon::getDeadMonster(int roomNumber) {
+Monster* Dungeon::getMonsterFromNumber(int roomNumber) {
     Room *room = rooms.returnFromNumber(roomNumber);
     if(!room) {
         return nullptr;

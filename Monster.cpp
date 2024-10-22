@@ -41,3 +41,12 @@ ostream &operator <<(ostream &os, Monster &monster) {
     os << monster.name << ", " << "HP: " << monster.hp;
     return os;
 }
+
+int Monster::getHp() {
+    return this->hp;
+}
+
+void Monster::setHp(int hp) {
+    this->hp = hp;
+}
+

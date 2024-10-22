@@ -59,7 +59,6 @@ private:
 
 		counter++;
 		if(counter == numToSearch) {
-			cout << "Num searched: " << counter << endl;
 			return &node->info;
 		}
 

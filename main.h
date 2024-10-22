@@ -5,3 +5,4 @@
 #include "SpellShop.h"
 
 bool isValidNumber(const string &str);
+bool fightMonster(Player &player, Monster &monster);

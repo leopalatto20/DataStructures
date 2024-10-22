@@ -10,7 +10,7 @@ Spell::Spell(string name, int damage, int mpCost) : name(name), damage(damage), 
 }
 
 ostream &operator << (ostream &os, Spell &spell) {
-    os << spell.name << "|" << spell.damage;
+    os << spell.name << "| Damage: " << spell.damage << "| MP cost: " << spell.mpCost;
     return os;
 }
 

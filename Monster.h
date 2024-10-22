@@ -21,6 +21,7 @@ public:
     bool operator <= (Monster& monster);
     int getAc();
     string getName();
-
     friend ostream &operator << (ostream &os, Monster &monster);
+    int getHp();
+    void setHp(int hp);
 };

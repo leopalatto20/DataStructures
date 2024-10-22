@@ -19,10 +19,13 @@ private:
 public:
 	Player(string name, string build);
 	void showInfo();
+	void showSpells();
 	int getMaxSpells();
 	bool checkForDuplicateSpells(Spell spell);
 	bool addSpell(Spell &spell);
 	bool loadStats();
 	bool addMonster(Monster &monster);
-	int useSpell(int spellNum);
+	int getSpellDamage(int spellNum);
+	int getHp();
+	void setHp(int hp);
 };

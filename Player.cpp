@@ -46,6 +46,11 @@ void Player::showInfo() {
     defeatedMonsters.displayMonstersInOrder();
 }
 
+void Player::showSpells() {
+    playerSpells.printInOrder();
+    cout << "Default spell: " << defaultAttack << endl;
+}
+
 int Player::getMaxSpells() {
     return this->maxSpells;
 }
@@ -62,10 +67,22 @@ bool Player::addMonster(Monster &monster) {
     return defeatedMonsters.addMonster(monster);
 }
 
- int Player::useSpell(int spellNum) {
-    Spell  *spell = playerSpells.returnFromNumber(spellNum);
+ int Player::getSpellDamage(int spellNum) {
+    if(spellNum == 0)
+        return defaultAttack.getDamage();
+    Spell *spell = playerSpells.returnFromNumber(spellNum);
+    if(!spell)
+        return 0;
     int mpCost = spell->getMpCost();
     if(mp - mpCost < 0)
         return 0;
     return spell->getDamage();
+}
+
+int Player::getHp() {
+    return this->hp;
+}
+
+void Player::setHp(int hp) {
+    this->hp = hp;
 }
