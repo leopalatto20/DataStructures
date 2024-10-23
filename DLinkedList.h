@@ -28,8 +28,8 @@ public:
 
 	bool insertData(T data) {
 		DLinkedNode<T> *newNode = new(nothrow) DLinkedNode<T>(data);
-			if(!newNode)
-				return false;
+		if(!newNode)
+			return false;
 		if(!head) {
 			head = newNode;
 			return true;
@@ -121,5 +121,32 @@ public:
 			current = current->next;
 		}
 		return false;
+	}
+
+	bool insertInOrder(T data) {
+		DLinkedNode<T> *newNode = new(nothrow) DLinkedNode<T>(data);
+		if(!newNode)
+			return false;
+		if(!head) {
+			head = newNode;
+			return true;
+		}
+		if(data < head->info) {
+			newNode->next = head;
+			head->prev = newNode;
+			head = newNode;
+			return true;
+		}
+
+		DLinkedNode<T>* current = head;
+		while(current->next && current->next->info < data) {
+			current = current->next;
+		}
+		newNode->next = current->next;
+		newNode->prev = current->prev;
+		if(current->next)
+			current->next->prev = newNode;
+		current->next = newNode;
+		return true;
 	}
 };

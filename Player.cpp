@@ -46,7 +46,7 @@ void Player::showInfo() {
     cout << "Lista de hechizos: \n";
     playerSpells.printInOrder();
     cout << "Monstruos derrotados: \n";
-    defeatedMonsters.displayMonstersInOrder();
+    defeatedMonsters.printInOrder();
 }
 
 void Player::showSpells() {
@@ -67,7 +67,7 @@ bool Player::addSpell(Spell &spell) {
 }
 
 bool Player::addMonster(Monster &monster) {
-    return defeatedMonsters.addMonster(monster);
+    return defeatedMonsters.insertInOrder(monster);
 }
 
  int Player::getSpellDamage(int spellNum) {

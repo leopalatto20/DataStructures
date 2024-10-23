@@ -13,19 +13,19 @@ Monster::~Monster() {
 }
 
 bool Monster::operator < (Monster &monster) {
-    return this->ac < monster.ac;
+    return this->name < monster.name;
 }
 
 bool Monster::operator > (Monster &monster) {
-    return this->ac > monster.ac;
+    return this->name > monster.name;
 }
 
 bool Monster::operator == (Monster &monster) {
-    return this->ac == monster.ac;
+    return this->name == monster.name;
 }
 
 bool Monster::operator<=(Monster &monster) {
-    return this->ac <= monster.ac;
+    return this->name <= monster.name;
 }
 
 
@@ -49,4 +49,3 @@ int Monster::getHp() {
 void Monster::setHp(int hp) {
     this->hp = hp;
 }
-

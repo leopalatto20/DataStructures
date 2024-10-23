@@ -10,7 +10,7 @@ class Player {
 private:
 	string name;
 	string build;
-	MonsterCatalogue defeatedMonsters;
+	DLinkedList<Monster> defeatedMonsters;
 	DLinkedList<Spell> playerSpells;
 	Spell defaultAttack;
 	int maxSpells;
