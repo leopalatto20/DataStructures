@@ -5,7 +5,7 @@
 
 using namespace std;
 
-Player::Player(string name, string build) : name(name), build(build), maxSpells(0), hp(0) {
+Player::Player(string name, string build) : name(name), build(build), maxSpells(0), hp(0), damageMultiplier(1.0) {
 }
 
 Player::~Player() {
@@ -17,6 +17,7 @@ bool Player::loadStats() {
         this->hp = 75;
         this->mp = 100;
         this->defaultAttack = Spell("Lions Claw", 15, 0);
+        this->maxHp = 200;
         return true;
     }
     if(build == "dexterity") {
@@ -24,6 +25,7 @@ bool Player::loadStats() {
         this->hp = 60;
         this->mp = 100;
         this->defaultAttack = Spell("Ichimonji", 10, 0);
+        this->maxHp = 170;
         return true;
     }
     if(build == "intelligence") {
@@ -31,6 +33,7 @@ bool Player::loadStats() {
         this->hp = 45;
         this->mp = 100;
         this->defaultAttack = Spell("Glintsote Pebble", 3, 0);
+        this->maxHp = 120;
         return true;
     }
     return false;
@@ -97,4 +100,20 @@ int Player::getMp() {
 
 void Player::setMp(int mp) {
     this->mp = mp;
+}
+
+int Player::getMaxHp() {
+    return this->maxHp;
+}
+
+void Player::setMaxHp(int maxHp) {
+    this->maxHp = maxHp;
+}
+
+double Player::getDamageMultiplier() {
+    return this->damageMultiplier;
+}
+
+void Player::setDamageMultiplier(double damageMultiplier) {
+    this->damageMultiplier = damageMultiplier;
 }

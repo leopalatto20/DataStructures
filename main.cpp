@@ -119,6 +119,8 @@ int main() {
     bool alivePlayer = true;
     int roomNumber = 1;
     while(alivePlayer && roomNumber <= ROOMS) {
+        if(roomNumber % 5 == 0 && roomNumber < 20) //El jugador se puede levelear cada 5 cuartos
+            levelPlayerUp(player1);
         Monster *pMonster = dungeon.getMonsterFromNumber(roomNumber), copyMonster;
         if(!pMonster) {
             cout << "Error cargando al monstruo para pelear.\n";
@@ -130,6 +132,8 @@ int main() {
             player1.addMonster(copyMonster);
             cout << "Te curas y recuperas Mp antes de pelear contra el siguiente monstruo.\n\n";
             player1.setHp(player1.getHp() + 50);
+            if(player1.getHp() > player1.getMaxHp())
+                player1.setHp(player1.getMaxHp());
             player1.setMp(player1.getMp() + 50);
             roomNumber++;
         }
@@ -185,9 +189,9 @@ bool fightMonster(Player &player, Monster &monster) { //Si regresa false, el jug
             else
                 validSpell = true;
         }
-
-        cout << "\nLe haces " << damage << " de danio al monstruo.\n";
-        monster.setHp(monster.getHp() - damage);
+        int newDamage = damage * player.getDamageMultiplier();
+        cout << "\nLe haces " << newDamage << " de danio al monstruo.\n";
+        monster.setHp(monster.getHp() - newDamage);
 
         if(monster.getHp() <= 0) {
             monster.setHp(0);
@@ -202,4 +206,36 @@ bool fightMonster(Player &player, Monster &monster) { //Si regresa false, el jug
         }
     }
     return player.getHp() > 0; //No es necesario pero me mandaba una advertencia cuando compilo entonces lopongo
+}
+
+void levelPlayerUp(Player &player) {
+    int option;
+    bool validOption = false;
+    string optionStr;
+    while(!validOption) {
+        do {
+            cout << "Llegaste a un punto seguro, puedes subir de nivel.\n"
+                    "1. Aumentar tu vida maxima en 50 puntos.\n"
+                    "2. Aumentar tu multiplicador de danio en 25%.\n";
+            cin >> optionStr;
+            if(!isValidNumber(optionStr))
+                cout << "No es un número valido.";
+        } while(!isValidNumber(optionStr));
+        option = stoi(optionStr);
+        if(option > 0 && option < 3)
+            validOption = true;
+    }
+    switch(option) {
+        case 1: {
+            player.setMaxHp(player.getMaxHp() + 50);
+            break;
+        }
+        case 2: {
+            player.setDamageMultiplier(player.getDamageMultiplier() + 0.25);
+            break;
+        }
+        default: {
+            break;
+        }
+    }
 }

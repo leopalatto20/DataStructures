@@ -6,3 +6,4 @@
 
 bool isValidNumber(const string &str);
 bool fightMonster(Player &player, Monster &monster);
+void levelPlayerUp(Player &player);

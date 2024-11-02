@@ -16,6 +16,8 @@ private:
 	int maxSpells;
 	int hp;
 	int mp;
+	int maxHp;
+	double damageMultiplier;
 public:
 	Player(string name, string build);
 	~Player();
@@ -31,4 +33,8 @@ public:
 	void setHp(int hp);
 	int getMp();
 	void setMp(int mp);
+	int getMaxHp();
+	void setMaxHp(int maxHp);
+	double getDamageMultiplier();
+	void setDamageMultiplier(double damageMultiplier);
 };
