@@ -5,6 +5,9 @@
 
 using namespace std;
 
+MonsterCatalogue::MonsterCatalogue() : treeSize(0){
+}
+
 bool MonsterCatalogue::addMonster(Monster &monster) {
     return catalogue.insert(monster);
 }
@@ -72,6 +75,7 @@ bool MonsterCatalogue::loadFromCSV() {
         }
         Monster monster(name, cr, type, size, ac, hp, align);
         catalogue.insert(monster);
+        treeSize++;
     }
     file.close();
     return true;
@@ -82,7 +86,7 @@ void MonsterCatalogue::displayMonsters() {
 }
 
 Monster* MonsterCatalogue::getMonster() {
-    int wantedMonster = 1 + rand() % 762;
+    int wantedMonster = 1 + rand() % treeSize;
     Monster *foundMonster = catalogue.searchInOrder(wantedMonster);
     if(!foundMonster)
         return nullptr;
