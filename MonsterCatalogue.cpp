@@ -86,6 +86,7 @@ void MonsterCatalogue::displayMonsters() {
 }
 
 Monster* MonsterCatalogue::getMonster() {
+    //tamanio del arbol
     int wantedMonster = 1 + rand() % treeSize;
     Monster *foundMonster = catalogue.searchInOrder(wantedMonster);
     if(!foundMonster)

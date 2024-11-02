@@ -5,6 +5,7 @@
 
 class MonsterCatalogue {
 private:
+    //usar tamanio del arbol
     BinaryTree<Monster> catalogue;
     bool isValidNumber(const string &str);
     bool isValidDecimal(const string &str);
