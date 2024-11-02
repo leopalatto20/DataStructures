@@ -128,8 +128,9 @@ int main() {
         if(fightMonster(player1, copyMonster)) {
             cout << "\nDerrotaste al monstruo, vas contra el siguiente.\n";
             player1.addMonster(copyMonster);
-            cout << "Te curas antes de pelear contra el siguiente monstruo.\n\n";
+            cout << "Te curas y recuperas Mp antes de pelear contra el siguiente monstruo.\n\n";
             player1.setHp(player1.getHp() + 50);
+            player1.setMp(player1.getMp() + 50);
             roomNumber++;
         }
         else {
@@ -137,6 +138,7 @@ int main() {
             alivePlayer = false;
         }
     }
+
     cout << endl << endl;
     if(!alivePlayer) {
         cout << "Moriste en el cuarto " << roomNumber << "\n";
@@ -166,6 +168,7 @@ bool fightMonster(Player &player, Monster &monster) { //Si regresa false, el jug
         string spellChoiceStr;
         bool validSpell = false;
         cout << "Tienes " << player.getHp() << " puntos de vida.\n";
+        cout << "Tienes " << player.getMp() << "MP.\n";
         while(!validSpell) {
             do {
                 player.showSpells();
@@ -178,7 +181,7 @@ bool fightMonster(Player &player, Monster &monster) { //Si regresa false, el jug
             spellChoice = stoi(spellChoiceStr);
             damage = player.getSpellDamage(spellChoice);
             if(damage <= 0)
-                cout << "No tienes ese hechizo.\n";
+                cout << "No puedes usar ese hechizo.\n";
             else
                 validSpell = true;
         }

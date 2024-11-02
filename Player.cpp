@@ -79,6 +79,7 @@ bool Player::addMonster(Monster &monster) {
     int mpCost = spell->getMpCost();
     if(mp - mpCost < 0)
         return 0;
+    mp -= spell->getMpCost();
     return spell->getDamage();
 }
 
@@ -88,4 +89,12 @@ int Player::getHp() {
 
 void Player::setHp(int hp) {
     this->hp = hp;
+}
+
+int Player::getMp() {
+    return this->mp;
+}
+
+void Player::setMp(int mp) {
+    this->mp = mp;
 }

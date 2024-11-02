@@ -29,4 +29,6 @@ public:
 	int getSpellDamage(int spellNum);
 	int getHp();
 	void setHp(int hp);
+	int getMp();
+	void setMp(int mp);
 };
